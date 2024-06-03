@@ -1,0 +1,12 @@
+Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\bin\Debug\apBiblioteca.exe.config
+Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\bin\Debug\apBiblioteca.exe
+Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\bin\Debug\apBiblioteca.pdb
+Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBiblioteca.csproj.AssemblyReference.cache
+Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBiblioteca.Properties.Resources.resources
+Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBiblioteca.csproj.GenerateResource.cache
+Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBiblioteca.csproj.CoreCompileInputs.cache
+Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBiblioteca.exe
+Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBiblioteca.pdb
+Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBiblioteca.FrmBiblioteca.resources
+Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBiblioteca.UI.FrmLivro.resources
+Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBiblioteca.UI.FrmLeitor.resources
