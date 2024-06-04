@@ -10,3 +10,16 @@ Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBi
 Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBiblioteca.FrmBiblioteca.resources
 Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBiblioteca.UI.FrmLivro.resources
 Z:\Cotuca\Tecnico\3o semestre\ProgMulti\Exemplos\MVC\apBiblioteca\obj\Debug\apBiblioteca.UI.FrmLeitor.resources
+C:\Users\u23157\Documents\apMVC\apBiblioteca\bin\Debug\apBiblioteca.exe.config
+C:\Users\u23157\Documents\apMVC\apBiblioteca\bin\Debug\apBiblioteca.exe
+C:\Users\u23157\Documents\apMVC\apBiblioteca\bin\Debug\apBiblioteca.pdb
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.csproj.AssemblyReference.cache
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.csproj.SuggestedBindingRedirects.cache
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.Properties.Resources.resources
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.FrmBiblioteca.resources
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.UI.FrmLeitor.resources
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.UI.FrmLivro.resources
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.csproj.GenerateResource.cache
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.csproj.CoreCompileInputs.cache
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.exe
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.pdb

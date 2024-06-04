@@ -23,7 +23,7 @@ namespace DAL
             try
             {
                 int ultimoId = -1;
-                var cmd = new SqlCommand("Select @@Identity as UltimoId from MVC.Livro", _conexao);
+                var cmd = new SqlCommand("Select max(idLivro) as UltimoId from MVC.Livro", _conexao);
                 _conexao.Open();
                 var dr = cmd.ExecuteReader();
 

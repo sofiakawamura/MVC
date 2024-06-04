@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpCadastro = new System.Windows.Forms.TabPage();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.btnExibir = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
@@ -45,7 +46,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tpLista = new System.Windows.Forms.TabPage();
             this.dgvLivro = new System.Windows.Forms.DataGridView();
-            this.btnLimpar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpCadastro.SuspendLayout();
             this.tpLista.SuspendLayout();
@@ -88,6 +88,17 @@
             this.tpCadastro.TabIndex = 0;
             this.tpCadastro.Text = "Cadastro";
             this.tpCadastro.UseVisualStyleBackColor = true;
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpar.Location = new System.Drawing.Point(439, 20);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(79, 34);
+            this.btnLimpar.TabIndex = 8;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnExibir
             // 
@@ -146,7 +157,7 @@
             // txtCodigoLivro
             // 
             this.txtCodigoLivro.Location = new System.Drawing.Point(150, 78);
-            this.txtCodigoLivro.MaxLength = 10;
+            this.txtCodigoLivro.MaxLength = 6;
             this.txtCodigoLivro.Name = "txtCodigoLivro";
             this.txtCodigoLivro.Size = new System.Drawing.Size(122, 23);
             this.txtCodigoLivro.TabIndex = 0;
@@ -235,17 +246,6 @@
             this.dgvLivro.ReadOnly = true;
             this.dgvLivro.Size = new System.Drawing.Size(559, 287);
             this.dgvLivro.TabIndex = 0;
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpar.Location = new System.Drawing.Point(439, 20);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(79, 34);
-            this.btnLimpar.TabIndex = 8;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // FrmLivro
             // 
