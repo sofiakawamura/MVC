@@ -10,6 +10,7 @@ namespace BLL
     {
         public string servidor, banco, usuario, senha;
         LeitorDAL dal = null;
+        EmprestimoDAL dalEmprestimo = null;
 
         public LeitorBLL(string servidor, string banco, string usuario, string senha)
         {
@@ -79,6 +80,9 @@ namespace BLL
         {
             try
             {
+                dalEmprestimo = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+
+
                 dal = new DAL.LeitorDAL(servidor, banco, usuario, senha);
                 dal.DeleteLeitor(leitor);
             }

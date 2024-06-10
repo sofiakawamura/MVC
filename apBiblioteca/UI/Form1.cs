@@ -55,5 +55,27 @@ namespace apBiblioteca
                 frmLeitor.Show();
             }
         }
+
+        private void empréstimosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (txtServidor.Text == "" || txtBD.Text == "" || txtUsuario.Text == "" || txtSenha.Text == "")
+                MessageBox.Show("Preencha os dados de conexão!");
+            else
+            {
+                frmOperacoes = new UI.FrmOperacoes();
+
+                frmOperacoes.servidor = txtServidor.Text;
+                frmOperacoes.banco = txtBD.Text;
+                frmOperacoes.usuario = txtUsuario.Text;
+                frmOperacoes.senha = txtSenha.Text;
+
+                frmOperacoes.Show();
+            }
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -56,7 +56,7 @@ namespace DAL
                        (int)dr["idLivro"],
                         dr["codigoLivro"] + "",
                         dr["tituloLivro"] + "",
-                        dr["autorLivro"] + "" 
+                        dr["autorLivro"] + ""
                     );
 
                     listaLivros.Add(livro);
@@ -148,7 +148,7 @@ namespace DAL
                     dr["tituloLivro"].ToString(),
                     dr["autorLIvro"].ToString());
 
-                // _conexao.Close();
+                _conexao.Close();
                 return livro;
             }
             catch (Exception ex)
@@ -157,7 +157,7 @@ namespace DAL
             }
         }
 
-        public void InsertLivro(Livro qualLivro) 
+        public void InsertLivro(Livro qualLivro)
         {
             try
             {

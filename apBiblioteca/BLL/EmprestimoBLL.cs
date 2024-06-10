@@ -21,24 +21,34 @@ namespace BLL
             this.senha = senha;
         }
 
-        public void IncluirEmprestimo(int idLivro, int idLeitor, 
-            DateTime dataEmprestimo, DateTime dataDevolucaoPrevista)
+        public void IncluirEmprestimo(Emprestimo qualEmprestimo)
         {
             try
             {
-                dal = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
-                dalLeitor = new DAL.LeitorDAL(servidor, banco, usuario, senha);
-                dalLivro = new DAL.LivroDAL(servidor, banco, usuario, senha);
-
-
-
                 // verificar se existe idLivro e idLeitor 
-                if (dal.SelectEmprestimosNaoDevolvidos(idLeitor).Count >= 5)
-                {
+                dalLeitor = new DAL.LeitorDAL(servidor, banco, usuario, senha);
+                if (dalLeitor.SelectLeitorById(qualEmprestimo.IdLeitor) == null)
+                    throw new Exception("Leitor não encontrado!");
+
+                dalLivro = new DAL.LivroDAL(servidor, banco, usuario, senha);
+                if (dalLivro.SelectLivroById(qualEmprestimo.IdLivro) == null)
+                    throw new Exception("Livro não encontrado!");
+
+                // verificar se livro já está emprestado
+                dal = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+                if (dal.SelectEmprestimoNaoDevolvidoByLivro(qualEmprestimo.IdLivro) != null)
+                    throw new Exception("Livro já está emprestado!");
+
+                // verificar se leitor já tem 5 livros emprestados
+                if (dal.SelectEmprestimosNaoDevolvidosByLeitor(qualEmprestimo.IdLeitor).Count >= 5)
                     throw new Exception("Leitor já tem 5 empréstimos não devolvidos. " +
                         "Devolva um livro antes de emprestar outro.");
-                }
-                dal.InsertEmprestimo(idLivro, idLeitor, dataEmprestimo, dataDevolucaoPrevista);
+
+                // verificar se data de devolução é válida
+                if (qualEmprestimo.DataDevolucaoPrevista.CompareTo(DateTime.Today) < 0)
+                    throw new Exception("Data de devolução não pode ser anterior à data atual!");
+
+                dal.InsertEmprestimo(qualEmprestimo);
             }
             catch (Exception ex)
             {
@@ -46,6 +56,47 @@ namespace BLL
             }
         }
 
+        public void UpdateDataDevolucaoRealEmpresimo(int idEmprestimo, DateTime data)
+        {
+            try
+            {
+                dal = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+                dal.UpdateDataDevolucaoRealEmpresimo(idEmprestimo, data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public DataTable SelecionarEmprestimos()
+        {
+            DataTable tb = new DataTable();
+            try
+            {
+                dal = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+                tb = dal.SelectEmprestimos();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return tb;
+        }
+
+        public Emprestimo SelecionarEmprestimoNaoDevolvidoPorLivro(int id)
+        {
+            try
+            {
+                dal = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+                return dal.SelectEmprestimoNaoDevolvidoByLivro(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 }

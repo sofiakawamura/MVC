@@ -21,8 +21,7 @@ namespace DAL
             _conexao = new SqlConnection(_cadeiaDeConexao);
         }
 
-        public void InsertEmprestimo(int idLivro, int idLeitor, 
-            DateTime dataEmprestimo, DateTime dataDevolucaoPrevista)
+        public void InsertEmprestimo(Emprestimo qualEmprestimo)
         {
             try
             {
@@ -32,11 +31,10 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand(sql, _conexao);
 
-                cmd.Parameters.AddWithValue("@idLivro", idLivro);
-                cmd.Parameters.AddWithValue("@idLeitor", idLeitor);
-                cmd.Parameters.AddWithValue("@dataEmprestimo", dataEmprestimo);
-                cmd.Parameters.AddWithValue("@dataDevolucaoPrevista", dataDevolucaoPrevista);
-
+                cmd.Parameters.AddWithValue("@idLivro", qualEmprestimo.IdLivro);
+                cmd.Parameters.AddWithValue("@idLeitor", qualEmprestimo.IdLeitor);
+                cmd.Parameters.AddWithValue("@dataEmprestimo", qualEmprestimo.DataEmprestimo);
+                cmd.Parameters.AddWithValue("@dataDevolucaoPrevista", qualEmprestimo.DataDevolucaoPrevista);
 
                 _conexao.Open();
                 cmd.ExecuteNonQuery();
@@ -81,7 +79,7 @@ namespace DAL
         {
             try
             {
-                string sql = "SELECT idLivro, idLeitor, dataEmprestimo, dataDevolucaoPrevista, dataDevolucaoReal FROM MVC.Emprestimo";
+                string sql = "SELECT idEmprestimo, idLivro, idLeitor, dataEmprestimo, dataDevolucaoPrevista, dataDevolucaoReal FROM MVC.Emprestimo";
                 SqlCommand executorDeComandosSQL = new SqlCommand(sql, _conexao);
 
                 _conexao.Open();
@@ -100,17 +98,59 @@ namespace DAL
             {
                 throw ex;
             }
+            finally
+            {
+                _conexao.Close();
+            }
         }
 
-        // select emprestimo nao devolvido by livro ?? 
+        public Emprestimo SelectEmprestimoNaoDevolvidoByLivro(int idDesejado)
+        {
+            try
+            {
+                string sql = "SELECT idEmprestimo, idLivro, idLeitor, dataEmprestimo, dataDevolucaoPrevista, dataDevolucaoReal" +
+                " FROM MVC.Emprestimo WHERE idLivro = @id AND dataDevolucaoReal is null" ;
+                SqlCommand cmd = new SqlCommand(sql, _conexao);
+                cmd.Parameters.AddWithValue("@id", idDesejado);
 
-        // select emprestimos nao devolvidos by leitor
-        public List<Emprestimo> SelectEmprestimosNaoDevolvidos(int idLeitor)
+                _conexao.Open();
+
+                SqlDataReader dr;
+                dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                Emprestimo emprestimo = null;
+                if (dr.Read())
+                {
+                    emprestimo = new Emprestimo(
+                        Convert.ToInt32(dr["idEmprestimo"]),
+                        Convert.ToInt32(dr["idLivro"]),
+                        Convert.ToInt32(dr["idLeitor"]),
+                        Convert.ToDateTime(dr["dataEmprestimo"]),
+                        Convert.ToDateTime(dr["dataDevolucaoPrevista"]),
+                        DateTime.Today
+                    );
+                }
+
+                _conexao.Close();
+                return emprestimo;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int QuantosEmprestimosLivro(int idLivro)
+        {
+            // fazer count
+        }
+
+        public List<Emprestimo> SelectEmprestimosNaoDevolvidosByLeitor(int idLeitor)
         {
             try
             {
                 var cmd = new SqlCommand("Select * from MVC.Emprestimo " +
-                    " where idLeitor = @idLeitor and dataDevolucaoReal = null", _conexao);
+                    " where idLeitor = @idLeitor and dataDevolucaoReal is null", _conexao);
 
                 cmd.Parameters.AddWithValue("@idLeitor", idLeitor);
 
@@ -149,12 +189,17 @@ namespace DAL
             }
         }
 
+        public int QuantosEmprestimosLeitor(int idLeitor)
+        {
+            // fazer count
+        }
+
         public List<Emprestimo> SelectEmprestimosNaoDevolvidos()
         {
             try
             {
                 var cmd = new SqlCommand("Select * from MVC.Emprestimo " +
-                    " where dataDevolucaoReal = null", _conexao);
+                    " where dataDevolucaoReal is null", _conexao);
 
                 _conexao.Open();
                 var listaEmprestimos = new List<Emprestimo>();

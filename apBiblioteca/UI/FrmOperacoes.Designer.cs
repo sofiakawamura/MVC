@@ -30,32 +30,35 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpEmprestimo = new System.Windows.Forms.TabPage();
+            this.dateDevolucaoPrevista = new System.Windows.Forms.DateTimePicker();
+            this.lbNomeLeitorEmprestimo = new System.Windows.Forms.Label();
+            this.lbTituloLivroEmprestimo = new System.Windows.Forms.Label();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnExibir = new System.Windows.Forms.Button();
             this.btnEmprestar = new System.Windows.Forms.Button();
-            this.txtIdLivroEmprestimo = new System.Windows.Forms.TextBox();
-            this.txtIdLeitorEmprestimo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tpDevolucao = new System.Windows.Forms.TabPage();
-            this.lbTituloLivroEmprestimo = new System.Windows.Forms.Label();
-            this.lbNomeLeitorEmprestimo = new System.Windows.Forms.Label();
-            this.dateDevolucaoPrevista = new System.Windows.Forms.DateTimePicker();
-            this.tpLista = new System.Windows.Forms.TabPage();
-            this.lbTituloLivroDevolucao = new System.Windows.Forms.Label();
-            this.txtIdLivroDevolucao = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnDevolver = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lbNomeLeitorDevolucao = new System.Windows.Forms.Label();
             this.chkAtrasado = new System.Windows.Forms.CheckBox();
+            this.lbNomeLeitorDevolucao = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnDevolver = new System.Windows.Forms.Button();
+            this.lbTituloLivroDevolucao = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tpLista = new System.Windows.Forms.TabPage();
             this.dgvLista = new System.Windows.Forms.DataGridView();
+            this.udIdLivroEmprestimo = new System.Windows.Forms.NumericUpDown();
+            this.udIdLeitorEmprestimo = new System.Windows.Forms.NumericUpDown();
+            this.udIdLivroDevolucao = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tpEmprestimo.SuspendLayout();
             this.tpDevolucao.SuspendLayout();
             this.tpLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udIdLivroEmprestimo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udIdLeitorEmprestimo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udIdLivroDevolucao)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -74,14 +77,14 @@
             // 
             // tpEmprestimo
             // 
+            this.tpEmprestimo.Controls.Add(this.udIdLeitorEmprestimo);
+            this.tpEmprestimo.Controls.Add(this.udIdLivroEmprestimo);
             this.tpEmprestimo.Controls.Add(this.dateDevolucaoPrevista);
             this.tpEmprestimo.Controls.Add(this.lbNomeLeitorEmprestimo);
             this.tpEmprestimo.Controls.Add(this.lbTituloLivroEmprestimo);
             this.tpEmprestimo.Controls.Add(this.btnLimpar);
             this.tpEmprestimo.Controls.Add(this.btnExibir);
             this.tpEmprestimo.Controls.Add(this.btnEmprestar);
-            this.tpEmprestimo.Controls.Add(this.txtIdLivroEmprestimo);
-            this.tpEmprestimo.Controls.Add(this.txtIdLeitorEmprestimo);
             this.tpEmprestimo.Controls.Add(this.label4);
             this.tpEmprestimo.Controls.Add(this.label3);
             this.tpEmprestimo.Controls.Add(this.label2);
@@ -93,6 +96,31 @@
             this.tpEmprestimo.Text = "Empréstimo";
             this.tpEmprestimo.UseVisualStyleBackColor = true;
             // 
+            // dateDevolucaoPrevista
+            // 
+            this.dateDevolucaoPrevista.Location = new System.Drawing.Point(174, 130);
+            this.dateDevolucaoPrevista.Name = "dateDevolucaoPrevista";
+            this.dateDevolucaoPrevista.Size = new System.Drawing.Size(199, 23);
+            this.dateDevolucaoPrevista.TabIndex = 11;
+            // 
+            // lbNomeLeitorEmprestimo
+            // 
+            this.lbNomeLeitorEmprestimo.AutoSize = true;
+            this.lbNomeLeitorEmprestimo.Location = new System.Drawing.Point(305, 78);
+            this.lbNomeLeitorEmprestimo.Name = "lbNomeLeitorEmprestimo";
+            this.lbNomeLeitorEmprestimo.Size = new System.Drawing.Size(13, 17);
+            this.lbNomeLeitorEmprestimo.TabIndex = 10;
+            this.lbNomeLeitorEmprestimo.Text = "-";
+            // 
+            // lbTituloLivroEmprestimo
+            // 
+            this.lbTituloLivroEmprestimo.AutoSize = true;
+            this.lbTituloLivroEmprestimo.Location = new System.Drawing.Point(305, 26);
+            this.lbTituloLivroEmprestimo.Name = "lbTituloLivroEmprestimo";
+            this.lbTituloLivroEmprestimo.Size = new System.Drawing.Size(13, 17);
+            this.lbTituloLivroEmprestimo.TabIndex = 9;
+            this.lbTituloLivroEmprestimo.Text = "-";
+            // 
             // btnLimpar
             // 
             this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -102,6 +130,7 @@
             this.btnLimpar.TabIndex = 8;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnExibir
             // 
@@ -112,6 +141,7 @@
             this.btnExibir.TabIndex = 7;
             this.btnExibir.Text = "Exibir";
             this.btnExibir.UseVisualStyleBackColor = true;
+            this.btnExibir.Click += new System.EventHandler(this.btnExibir_Click);
             // 
             // btnEmprestar
             // 
@@ -122,22 +152,7 @@
             this.btnEmprestar.TabIndex = 4;
             this.btnEmprestar.Text = "Emprestar";
             this.btnEmprestar.UseVisualStyleBackColor = true;
-            // 
-            // txtIdLivroEmprestimo
-            // 
-            this.txtIdLivroEmprestimo.Location = new System.Drawing.Point(174, 23);
-            this.txtIdLivroEmprestimo.MaxLength = 6;
-            this.txtIdLivroEmprestimo.Name = "txtIdLivroEmprestimo";
-            this.txtIdLivroEmprestimo.Size = new System.Drawing.Size(100, 23);
-            this.txtIdLivroEmprestimo.TabIndex = 0;
-            // 
-            // txtIdLeitorEmprestimo
-            // 
-            this.txtIdLeitorEmprestimo.Location = new System.Drawing.Point(174, 75);
-            this.txtIdLeitorEmprestimo.MaxLength = 50;
-            this.txtIdLeitorEmprestimo.Name = "txtIdLeitorEmprestimo";
-            this.txtIdLeitorEmprestimo.Size = new System.Drawing.Size(100, 23);
-            this.txtIdLeitorEmprestimo.TabIndex = 1;
+            this.btnEmprestar.Click += new System.EventHandler(this.btnEmprestar_Click);
             // 
             // label4
             // 
@@ -168,12 +183,12 @@
             // 
             // tpDevolucao
             // 
+            this.tpDevolucao.Controls.Add(this.udIdLivroDevolucao);
             this.tpDevolucao.Controls.Add(this.chkAtrasado);
             this.tpDevolucao.Controls.Add(this.lbNomeLeitorDevolucao);
             this.tpDevolucao.Controls.Add(this.label6);
             this.tpDevolucao.Controls.Add(this.btnDevolver);
             this.tpDevolucao.Controls.Add(this.lbTituloLivroDevolucao);
-            this.tpDevolucao.Controls.Add(this.txtIdLivroDevolucao);
             this.tpDevolucao.Controls.Add(this.label5);
             this.tpDevolucao.Location = new System.Drawing.Point(4, 25);
             this.tpDevolucao.Name = "tpDevolucao";
@@ -182,96 +197,6 @@
             this.tpDevolucao.TabIndex = 1;
             this.tpDevolucao.Text = "Devolução";
             this.tpDevolucao.UseVisualStyleBackColor = true;
-            // 
-            // lbTituloLivroEmprestimo
-            // 
-            this.lbTituloLivroEmprestimo.AutoSize = true;
-            this.lbTituloLivroEmprestimo.Location = new System.Drawing.Point(305, 26);
-            this.lbTituloLivroEmprestimo.Name = "lbTituloLivroEmprestimo";
-            this.lbTituloLivroEmprestimo.Size = new System.Drawing.Size(13, 17);
-            this.lbTituloLivroEmprestimo.TabIndex = 9;
-            this.lbTituloLivroEmprestimo.Text = "-";
-            // 
-            // lbNomeLeitorEmprestimo
-            // 
-            this.lbNomeLeitorEmprestimo.AutoSize = true;
-            this.lbNomeLeitorEmprestimo.Location = new System.Drawing.Point(305, 78);
-            this.lbNomeLeitorEmprestimo.Name = "lbNomeLeitorEmprestimo";
-            this.lbNomeLeitorEmprestimo.Size = new System.Drawing.Size(13, 17);
-            this.lbNomeLeitorEmprestimo.TabIndex = 10;
-            this.lbNomeLeitorEmprestimo.Text = "-";
-            // 
-            // dateDevolucaoPrevista
-            // 
-            this.dateDevolucaoPrevista.Location = new System.Drawing.Point(174, 130);
-            this.dateDevolucaoPrevista.Name = "dateDevolucaoPrevista";
-            this.dateDevolucaoPrevista.Size = new System.Drawing.Size(199, 23);
-            this.dateDevolucaoPrevista.TabIndex = 11;
-            // 
-            // tpLista
-            // 
-            this.tpLista.Controls.Add(this.dgvLista);
-            this.tpLista.Location = new System.Drawing.Point(4, 25);
-            this.tpLista.Name = "tpLista";
-            this.tpLista.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLista.Size = new System.Drawing.Size(596, 240);
-            this.tpLista.TabIndex = 2;
-            this.tpLista.Text = "Lista";
-            this.tpLista.UseVisualStyleBackColor = true;
-            // 
-            // lbTituloLivroDevolucao
-            // 
-            this.lbTituloLivroDevolucao.AutoSize = true;
-            this.lbTituloLivroDevolucao.Location = new System.Drawing.Point(297, 26);
-            this.lbTituloLivroDevolucao.Name = "lbTituloLivroDevolucao";
-            this.lbTituloLivroDevolucao.Size = new System.Drawing.Size(13, 17);
-            this.lbTituloLivroDevolucao.TabIndex = 12;
-            this.lbTituloLivroDevolucao.Text = "-";
-            // 
-            // txtIdLivroDevolucao
-            // 
-            this.txtIdLivroDevolucao.Location = new System.Drawing.Point(169, 23);
-            this.txtIdLivroDevolucao.MaxLength = 6;
-            this.txtIdLivroDevolucao.Name = "txtIdLivroDevolucao";
-            this.txtIdLivroDevolucao.Size = new System.Drawing.Size(100, 23);
-            this.txtIdLivroDevolucao.TabIndex = 10;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(141, 17);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Identificação do livro:";
-            // 
-            // btnDevolver
-            // 
-            this.btnDevolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDevolver.Location = new System.Drawing.Point(26, 184);
-            this.btnDevolver.Name = "btnDevolver";
-            this.btnDevolver.Size = new System.Drawing.Size(107, 34);
-            this.btnDevolver.TabIndex = 13;
-            this.btnDevolver.Text = "Devolver";
-            this.btnDevolver.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 78);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 17);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Emprestado por:";
-            // 
-            // lbNomeLeitorDevolucao
-            // 
-            this.lbNomeLeitorDevolucao.AutoSize = true;
-            this.lbNomeLeitorDevolucao.Location = new System.Drawing.Point(141, 78);
-            this.lbNomeLeitorDevolucao.Name = "lbNomeLeitorDevolucao";
-            this.lbNomeLeitorDevolucao.Size = new System.Drawing.Size(13, 17);
-            this.lbNomeLeitorDevolucao.TabIndex = 15;
-            this.lbNomeLeitorDevolucao.Text = "-";
             // 
             // chkAtrasado
             // 
@@ -284,10 +209,71 @@
             this.chkAtrasado.Text = "Empréstimo atrasado";
             this.chkAtrasado.UseVisualStyleBackColor = true;
             // 
+            // lbNomeLeitorDevolucao
+            // 
+            this.lbNomeLeitorDevolucao.AutoSize = true;
+            this.lbNomeLeitorDevolucao.Location = new System.Drawing.Point(141, 78);
+            this.lbNomeLeitorDevolucao.Name = "lbNomeLeitorDevolucao";
+            this.lbNomeLeitorDevolucao.Size = new System.Drawing.Size(13, 17);
+            this.lbNomeLeitorDevolucao.TabIndex = 15;
+            this.lbNomeLeitorDevolucao.Text = "-";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 78);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(113, 17);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Emprestado por:";
+            // 
+            // btnDevolver
+            // 
+            this.btnDevolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDevolver.Location = new System.Drawing.Point(26, 184);
+            this.btnDevolver.Name = "btnDevolver";
+            this.btnDevolver.Size = new System.Drawing.Size(107, 34);
+            this.btnDevolver.TabIndex = 13;
+            this.btnDevolver.Text = "Devolver";
+            this.btnDevolver.UseVisualStyleBackColor = true;
+            this.btnDevolver.Click += new System.EventHandler(this.btnDevolver_Click);
+            // 
+            // lbTituloLivroDevolucao
+            // 
+            this.lbTituloLivroDevolucao.AutoSize = true;
+            this.lbTituloLivroDevolucao.Location = new System.Drawing.Point(297, 26);
+            this.lbTituloLivroDevolucao.Name = "lbTituloLivroDevolucao";
+            this.lbTituloLivroDevolucao.Size = new System.Drawing.Size(13, 17);
+            this.lbTituloLivroDevolucao.TabIndex = 12;
+            this.lbTituloLivroDevolucao.Text = "-";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(141, 17);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Identificação do livro:";
+            // 
+            // tpLista
+            // 
+            this.tpLista.Controls.Add(this.dgvLista);
+            this.tpLista.Location = new System.Drawing.Point(4, 25);
+            this.tpLista.Name = "tpLista";
+            this.tpLista.Padding = new System.Windows.Forms.Padding(3);
+            this.tpLista.Size = new System.Drawing.Size(596, 240);
+            this.tpLista.TabIndex = 2;
+            this.tpLista.Text = "Lista";
+            this.tpLista.UseVisualStyleBackColor = true;
+            // 
             // dgvLista
             // 
             this.dgvLista.AllowUserToAddRows = false;
             this.dgvLista.AllowUserToDeleteRows = false;
+            this.dgvLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLista.Location = new System.Drawing.Point(3, 6);
             this.dgvLista.Name = "dgvLista";
@@ -295,13 +281,67 @@
             this.dgvLista.Size = new System.Drawing.Size(587, 231);
             this.dgvLista.TabIndex = 0;
             // 
+            // udIdLivroEmprestimo
+            // 
+            this.udIdLivroEmprestimo.Location = new System.Drawing.Point(174, 24);
+            this.udIdLivroEmprestimo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIdLivroEmprestimo.Name = "udIdLivroEmprestimo";
+            this.udIdLivroEmprestimo.Size = new System.Drawing.Size(120, 23);
+            this.udIdLivroEmprestimo.TabIndex = 12;
+            this.udIdLivroEmprestimo.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIdLivroEmprestimo.Leave += new System.EventHandler(this.udIdLivroEmprestimo_Leave);
+            // 
+            // udIdLeitorEmprestimo
+            // 
+            this.udIdLeitorEmprestimo.Location = new System.Drawing.Point(174, 76);
+            this.udIdLeitorEmprestimo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIdLeitorEmprestimo.Name = "udIdLeitorEmprestimo";
+            this.udIdLeitorEmprestimo.Size = new System.Drawing.Size(120, 23);
+            this.udIdLeitorEmprestimo.TabIndex = 13;
+            this.udIdLeitorEmprestimo.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIdLeitorEmprestimo.Leave += new System.EventHandler(this.udIdLeitorEmprestimo_Leave);
+            // 
+            // udIdLivroDevolucao
+            // 
+            this.udIdLivroDevolucao.Location = new System.Drawing.Point(169, 24);
+            this.udIdLivroDevolucao.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIdLivroDevolucao.Name = "udIdLivroDevolucao";
+            this.udIdLivroDevolucao.Size = new System.Drawing.Size(120, 23);
+            this.udIdLivroDevolucao.TabIndex = 17;
+            this.udIdLivroDevolucao.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIdLivroDevolucao.Leave += new System.EventHandler(this.udIdLivroDevolucao_Leave);
+            // 
             // FrmOperacoes
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(606, 269);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmOperacoes";
             this.Text = "FrmOperacoes";
             this.tabControl1.ResumeLayout(false);
@@ -311,6 +351,9 @@
             this.tpDevolucao.PerformLayout();
             this.tpLista.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udIdLivroEmprestimo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udIdLeitorEmprestimo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udIdLivroDevolucao)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -322,8 +365,6 @@
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnExibir;
         private System.Windows.Forms.Button btnEmprestar;
-        private System.Windows.Forms.TextBox txtIdLivroEmprestimo;
-        private System.Windows.Forms.TextBox txtIdLeitorEmprestimo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -337,8 +378,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnDevolver;
         private System.Windows.Forms.Label lbTituloLivroDevolucao;
-        private System.Windows.Forms.TextBox txtIdLivroDevolucao;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvLista;
+        private System.Windows.Forms.NumericUpDown udIdLeitorEmprestimo;
+        private System.Windows.Forms.NumericUpDown udIdLivroEmprestimo;
+        private System.Windows.Forms.NumericUpDown udIdLivroDevolucao;
     }
 }

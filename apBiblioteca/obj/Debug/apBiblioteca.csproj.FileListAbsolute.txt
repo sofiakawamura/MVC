@@ -22,3 +22,4 @@ C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.csproj.Gener
 C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.csproj.CoreCompileInputs.cache
 C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.exe
 C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.pdb
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.UI.FrmOperacoes.resources

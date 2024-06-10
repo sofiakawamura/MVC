@@ -37,7 +37,6 @@
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empréstimosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.devoluçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.livrosEmprestadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.livrosAtrasadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -111,12 +110,12 @@
             this.sairToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // operaçõesToolStripMenuItem
             // 
             this.operaçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.empréstimosToolStripMenuItem,
-            this.devoluçõesToolStripMenuItem});
+            this.empréstimosToolStripMenuItem});
             this.operaçõesToolStripMenuItem.Name = "operaçõesToolStripMenuItem";
             this.operaçõesToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.operaçõesToolStripMenuItem.Text = "Operações";
@@ -124,14 +123,9 @@
             // empréstimosToolStripMenuItem
             // 
             this.empréstimosToolStripMenuItem.Name = "empréstimosToolStripMenuItem";
-            this.empréstimosToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.empréstimosToolStripMenuItem.Text = "Empréstimos";
-            // 
-            // devoluçõesToolStripMenuItem
-            // 
-            this.devoluçõesToolStripMenuItem.Name = "devoluçõesToolStripMenuItem";
-            this.devoluçõesToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.devoluçõesToolStripMenuItem.Text = "Devoluções";
+            this.empréstimosToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.empréstimosToolStripMenuItem.Text = "Empréstimos e Devoluções";
+            this.empréstimosToolStripMenuItem.Click += new System.EventHandler(this.empréstimosToolStripMenuItem_Click);
             // 
             // consultasToolStripMenuItem
             // 
@@ -286,7 +280,6 @@
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operaçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empréstimosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem devoluçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem livrosEmprestadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem livrosAtrasadosToolStripMenuItem;

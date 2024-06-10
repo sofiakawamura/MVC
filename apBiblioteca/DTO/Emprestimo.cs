@@ -30,8 +30,8 @@ namespace DTO
             get => idEmprestimo; 
             set
             {
-                if (value <= 0)
-                    throw new Exception("Id de empréstimo deve ser maior que 0.");
+                if (value < 0)
+                    throw new Exception("Id de empréstimo não pode ser negativo.");
                 idEmprestimo = value;
             }
         }
