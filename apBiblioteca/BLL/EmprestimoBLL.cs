@@ -98,5 +98,85 @@ namespace BLL
             }
         }
 
+
+        // estatísticas
+
+        public int TotalEmprestimos()
+        {
+            try
+            {
+                dal = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+                return dal.TotalEmprestimos();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int EmprestimosAtivos()
+        {
+            try
+            {
+                dal = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+                return dal.EmprestimosAtivos();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int TotalAtrasos()
+        {
+            try
+            {
+                dal = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+                return dal.TotalAtrasos();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int AtrasosAtivos()
+        {
+            try
+            {
+                dal = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+                return dal.AtrasosAtivos();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int TempoEmprestimo()
+        {
+            try
+            {
+                dal = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+                return dal.TempoEmprestimo();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int TempoAtraso()
+        {
+            try
+            {
+                dal = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+                return dal.TempoAtraso();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

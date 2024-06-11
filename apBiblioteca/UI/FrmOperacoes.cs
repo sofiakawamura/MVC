@@ -19,46 +19,67 @@ namespace apBiblioteca.UI
 
         private void udIdLivroEmprestimo_Leave(object sender, EventArgs e)
         {
-            var bll = new LivroBLL(servidor, banco, usuario, senha);
-            Livro livro = bll.ListarLivroPorId(int.Parse(udIdLivroEmprestimo.Value.ToString()));
-            if (livro == null)
-                MessageBox.Show("Livro não encontrado!");
-            else 
-                lbTituloLivroEmprestimo.Text = livro.TituloLivro;
+            try
+            {
+                var bll = new LivroBLL(servidor, banco, usuario, senha);
+                Livro livro = bll.ListarLivroPorId(int.Parse(udIdLivroEmprestimo.Value.ToString()));
+                if (livro == null)
+                    MessageBox.Show("Livro não encontrado!");
+                else 
+                    lbTituloLivroEmprestimo.Text = livro.TituloLivro;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" Erro : " + ex.Message.ToString());
+            }
         }
 
         private void udIdLeitorEmprestimo_Leave(object sender, EventArgs e)
         {
-            var bll = new LeitorBLL(servidor, banco, usuario, senha);
-            Leitor leitor = bll.ListarLeitorPorId(int.Parse(udIdLeitorEmprestimo.Value.ToString()));
-            if (leitor == null)
-                MessageBox.Show("Leitor não encontrado!");
-            else 
-                lbNomeLeitorEmprestimo.Text = leitor.NomeLeitor;
+            try
+            {
+                var bll = new LeitorBLL(servidor, banco, usuario, senha);
+                Leitor leitor = bll.ListarLeitorPorId(int.Parse(udIdLeitorEmprestimo.Value.ToString()));
+                if (leitor == null)
+                    MessageBox.Show("Leitor não encontrado!");
+                else 
+                    lbNomeLeitorEmprestimo.Text = leitor.NomeLeitor;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" Erro : " + ex.Message.ToString());
+            }
         }
 
         private void udIdLivroDevolucao_Leave(object sender, EventArgs e)
         {
-            var bllLivro = new LivroBLL(servidor, banco, usuario, senha);
-            Livro livro = bllLivro.ListarLivroPorId(int.Parse(udIdLivroDevolucao.Value.ToString()));
-            if (livro == null)
-                MessageBox.Show("Livro não encontrado!");
-            else
-                lbTituloLivroDevolucao.Text = livro.TituloLivro;
-
-            var bll = new EmprestimoBLL(servidor, banco, usuario, senha);
-            Emprestimo emprestimo = bll.SelecionarEmprestimoNaoDevolvidoPorLivro(int.Parse(udIdLivroDevolucao.Value.ToString()));
-
-            if (emprestimo == null)
-                MessageBox.Show("Livro não emprestado!");
-            else
+            try
             {
-                var bllLeitor = new LeitorBLL(servidor, banco, usuario, senha);
-                Leitor leitor = bllLeitor.ListarLeitorPorId(emprestimo.IdLeitor);
-                lbNomeLeitorDevolucao.Text = leitor.NomeLeitor;
+                var bllLivro = new LivroBLL(servidor, banco, usuario, senha);
+                Livro livro = bllLivro.ListarLivroPorId(int.Parse(udIdLivroDevolucao.Value.ToString()));
+                if (livro == null)
+                    MessageBox.Show("Livro não encontrado!");
+                else
+                    lbTituloLivroDevolucao.Text = livro.TituloLivro;
 
-                if (DateTime.Today.CompareTo(emprestimo.DataDevolucaoPrevista) > 0)
-                    chkAtrasado.Checked = true;
+                var bll = new EmprestimoBLL(servidor, banco, usuario, senha);
+                Emprestimo emprestimo = bll.SelecionarEmprestimoNaoDevolvidoPorLivro(int.Parse(udIdLivroDevolucao.Value.ToString()));
+
+                if (emprestimo == null)
+                    MessageBox.Show("Livro não emprestado!");
+                else
+                {
+                    var bllLeitor = new LeitorBLL(servidor, banco, usuario, senha);
+                    Leitor leitor = bllLeitor.ListarLeitorPorId(emprestimo.IdLeitor);
+                    lbNomeLeitorDevolucao.Text = leitor.NomeLeitor;
+
+                    if (DateTime.Today.CompareTo(emprestimo.DataDevolucaoPrevista) > 0)
+                        chkAtrasado.Checked = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" Erro : " + ex.Message.ToString());
             }
         }
 

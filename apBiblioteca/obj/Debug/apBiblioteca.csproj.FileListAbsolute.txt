@@ -23,3 +23,5 @@ C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.csproj.CoreC
 C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.exe
 C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.pdb
 C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.UI.FrmOperacoes.resources
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.UI.FrmConsultas.resources
+C:\Users\u23157\Documents\apMVC\apBiblioteca\obj\Debug\apBiblioteca.UI.FrmEstatisticas.resources

@@ -157,6 +157,66 @@ namespace DAL
             }
         }
 
+        public DataTable SelectLivrosEmprestados()
+        {
+            try
+            {
+                string sql = "SELECT Li.IdLivro, Li.codigoLivro, Li.tituloLivro, " +
+                    " Le.idLeitor, Le.nomeLeitor, E.dataEmprestimo, E.dataDevolucaoPrevista " +
+                    " FROM (MVC.Emprestimo E JOIN MVC.Livro Li ON E.idLivro = Li.IdLivro) " +
+                    " JOIN MVC.Leitor Le ON E.idLeitor = Le.IdLeitor " +
+                    " WHERE E.dataDevolucaoReal IS NULL";
+
+                SqlCommand executorDeComandosSQL = new SqlCommand(sql, _conexao);
+
+                _conexao.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = executorDeComandosSQL; // busca os registros de Livro usando o SelectCommand
+
+                DataTable dt = new DataTable();
+                da.Fill(dt); // adaptador preenche a tabela
+
+                _conexao.Close();
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable SelectLivrosAtrasados()
+        {
+            try
+            {
+                string sql = "SELECT Li.IdLivro, Li.codigoLivro, Li.tituloLivro, " +
+                    " Le.idLeitor, Le.nomeLeitor, E.dataEmprestimo, E.dataDevolucaoPrevista, DATEDIFF(day, E.dataDevolucaoPrevista, GETDATE()) as 'atraso' " +
+                    " FROM (MVC.Emprestimo E JOIN MVC.Livro Li ON E.idLivro = Li.IdLivro) " +
+                    " JOIN MVC.Leitor Le ON E.idLeitor = Le.IdLeitor " +
+                    " WHERE E.dataDevolucaoReal IS NULL AND GETDATE() > E.dataDevolucaoPrevista";
+
+                SqlCommand executorDeComandosSQL = new SqlCommand(sql, _conexao);
+
+                _conexao.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = executorDeComandosSQL; // busca os registros de Livro usando o SelectCommand
+
+                DataTable dt = new DataTable();
+                da.Fill(dt); // adaptador preenche a tabela
+
+                _conexao.Close();
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void InsertLivro(Livro qualLivro)
         {
             try

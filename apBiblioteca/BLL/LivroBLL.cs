@@ -48,6 +48,36 @@ namespace BLL
             return tb;
         }
 
+        public DataTable SelecionarLivrosEmprestados()
+        {
+            DataTable tb = new DataTable();
+            try
+            {
+                dal = new DAL.LivroDAL(servidor, banco, usuario, senha);
+                tb = dal.SelectLivrosEmprestados();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return tb;
+        }
+
+        public DataTable SelecionarLivrosAtrasados()
+        {
+            DataTable tb = new DataTable();
+            try
+            {
+                dal = new DAL.LivroDAL(servidor, banco, usuario, senha);
+                tb = dal.SelectLivrosAtrasados();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return tb;
+        }
+
         public void IncluirLivro(Livro livro) 
         {
             try

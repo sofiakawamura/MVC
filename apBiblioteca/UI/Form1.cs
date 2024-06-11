@@ -16,6 +16,8 @@ namespace apBiblioteca
         FrmLivro frmLivro = null;
         FrmLeitor frmLeitor = null;
         FrmOperacoes frmOperacoes = null;
+        FrmConsultas frmConsultas = null;
+        FrmEstatisticas frmEstatisticas = null;
 
         public FrmBiblioteca()
         {
@@ -76,6 +78,40 @@ namespace apBiblioteca
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void livrosEmprestadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (txtServidor.Text == "" || txtBD.Text == "" || txtUsuario.Text == "" || txtSenha.Text == "")
+                MessageBox.Show("Preencha os dados de conexão!");
+            else
+            {
+                frmConsultas = new UI.FrmConsultas();
+
+                frmConsultas.servidor = txtServidor.Text;
+                frmConsultas.banco = txtBD.Text;
+                frmConsultas.usuario = txtUsuario.Text;
+                frmConsultas.senha = txtSenha.Text;
+
+                frmConsultas.Show();
+            }
+        }
+
+        private void estatísticasDeEmpréstimosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (txtServidor.Text == "" || txtBD.Text == "" || txtUsuario.Text == "" || txtSenha.Text == "")
+                MessageBox.Show("Preencha os dados de conexão!");
+            else
+            {
+                frmEstatisticas = new UI.FrmEstatisticas();
+
+                frmEstatisticas.servidor = txtServidor.Text;
+                frmEstatisticas.banco = txtBD.Text;
+                frmEstatisticas.usuario = txtUsuario.Text;
+                frmEstatisticas.senha = txtSenha.Text;
+
+                frmEstatisticas.Show();
+            }
         }
     }
 }

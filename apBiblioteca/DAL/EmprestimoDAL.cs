@@ -140,7 +140,7 @@ namespace DAL
             }
         }
 
-        public int QuantosEmprestimosLivro(int idLivro)
+        public void QuantosEmprestimosLivro(int idLivro)
         {
             // fazer count
         }
@@ -164,17 +164,9 @@ namespace DAL
                        (int)dr["idEmprestimo"],
                        (int)dr["idLivro"],
                        (int)dr["idLeitor"],
-                        new DateTime(
-                            int.Parse(dr["dataEmprestimo"].ToString().Substring(8, 2)),
-                            int.Parse(dr["dataEmprestimo"].ToString().Substring(5, 2)),
-                            int.Parse(dr["dataEmprestimo"].ToString().Substring(0, 4))
-                        ),
-                        new DateTime(
-                            int.Parse(dr["dataDevolucaoPrevista"].ToString().Substring(8, 2)),
-                            int.Parse(dr["dataDevolucaoPrevista"].ToString().Substring(5, 2)),
-                            int.Parse(dr["dataDevolucaoPrevista"].ToString().Substring(0, 4))
-                        ),
-                        new DateTime(default)
+                       Convert.ToDateTime(dr["dataEmprestimo"]),
+                       Convert.ToDateTime(dr["dataDevolucaoPrevista"]),
+                       DateTime.Today
                     );
                     
                     listaEmprestimos.Add(emprestimo);
@@ -189,50 +181,157 @@ namespace DAL
             }
         }
 
-        public int QuantosEmprestimosLeitor(int idLeitor)
+        public void QuantosEmprestimosLeitor(int idLeitor)
         {
             // fazer count
         }
 
-        public List<Emprestimo> SelectEmprestimosNaoDevolvidos()
+
+        // Estatísticas
+
+        public int TotalEmprestimos()
         {
             try
             {
-                var cmd = new SqlCommand("Select * from MVC.Emprestimo " +
-                    " where dataDevolucaoReal is null", _conexao);
+                string sql = " select count(*) from mvc.Emprestimo";
+
+                var cmd = new SqlCommand(sql, _conexao);
 
                 _conexao.Open();
-                var listaEmprestimos = new List<Emprestimo>();
-                var dr = cmd.ExecuteReader();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
-                while (dr.Read())
-                {
-                    var emprestimo = new Emprestimo(
-                       (int)dr["idEmprestimo"],
-                       (int)dr["idLivro"],
-                       (int)dr["idLeitor"],
-                        new DateTime(
-                            int.Parse(dr["dataEmprestimo"].ToString().Substring(8, 2)),
-                            int.Parse(dr["dataEmprestimo"].ToString().Substring(5, 2)),
-                            int.Parse(dr["dataEmprestimo"].ToString().Substring(0, 4))
-                        ),
-                        new DateTime(
-                            int.Parse(dr["dataDevolucaoPrevista"].ToString().Substring(8, 2)),
-                            int.Parse(dr["dataDevolucaoPrevista"].ToString().Substring(5, 2)),
-                            int.Parse(dr["dataDevolucaoPrevista"].ToString().Substring(0, 4))
-                        ),
-                        new DateTime(default)
-                    );
-
-                    listaEmprestimos.Add(emprestimo);
-                }
+                int total = 0;
+                if (dr.Read())
+                    total = Convert.ToInt32(dr[0]);
 
                 _conexao.Close();
-                return listaEmprestimos;
+                return total;
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao acessar empréstimo " + ex.Message);
+                throw ex;
+            }
+        }
+
+        public int EmprestimosAtivos()
+        {
+            try
+            {
+                string sql = " select count(*) from mvc.Emprestimo where dataDevolucaoReal is null ";
+
+                var cmd = new SqlCommand(sql, _conexao);
+
+                _conexao.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                int total = 0;
+                if (dr.Read())
+                    total = Convert.ToInt32(dr[0]);
+
+                _conexao.Close();
+                return total;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int TotalAtrasos()
+        {
+            try
+            {
+                string sql = " select count(*) from mvc.Emprestimo where (dataDevolucaoReal > dataDevolucaoPrevista) or " +
+                    " (dataDevolucaoReal is null and GETDATE() > dataDevolucaoPrevista) ";
+
+                var cmd = new SqlCommand(sql, _conexao);
+
+                _conexao.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                int total = 0;
+                if (dr.Read())
+                    total = Convert.ToInt32(dr[0]);
+
+                _conexao.Close();
+                return total;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int AtrasosAtivos()
+        {
+            try
+            {
+                string sql = " select count(*) from mvc.Emprestimo where (dataDevolucaoReal is null and GETDATE() > dataDevolucaoPrevista)";
+
+                var cmd = new SqlCommand(sql, _conexao);
+
+                _conexao.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                int total = 0;
+                if (dr.Read())
+                    total = Convert.ToInt32(dr[0]);
+
+                _conexao.Close();
+                return total;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int TempoEmprestimo()
+        {
+            try
+            {
+                string sql = " select avg(DATEDIFF(day, dataEmprestimo, dataDevolucaoReal)) from mvc.Emprestimo where dataDevolucaoReal is not null";
+
+                var cmd = new SqlCommand(sql, _conexao);
+
+                _conexao.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                int total = 0;
+                if (dr.Read())
+                    total = Convert.ToInt32(dr[0]);
+
+                _conexao.Close();
+                return total;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int TempoAtraso()
+        {
+            try
+            {
+                string sql = " select avg(DATEDIFF(day, dataDevolucaoPrevista, dataDevolucaoReal)) from mvc.Emprestimo where " +
+                    " dataDevolucaoReal is not null and dataDevolucaoReal > dataDevolucaoPrevista ";
+
+                var cmd = new SqlCommand(sql, _conexao);
+
+                _conexao.Open();
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                int total = 0;
+                if (dr.Read())
+                    total = Convert.ToInt32(dr[0]);
+
+                _conexao.Close();
+                return total;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }
