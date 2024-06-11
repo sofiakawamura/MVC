@@ -61,7 +61,7 @@ namespace BLL
             try
             {
                 dal = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
-                dal.UpdateDataDevolucaoRealEmpresimo(idEmprestimo, data);
+                dal.UpdateDataDevolucaoRealEmprestimo(idEmprestimo, data);
             }
             catch (Exception ex)
             {

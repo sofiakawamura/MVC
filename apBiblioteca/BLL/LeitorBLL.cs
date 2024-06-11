@@ -80,11 +80,13 @@ namespace BLL
         {
             try
             {
-                dalEmprestimo = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
-
-
                 dal = new DAL.LeitorDAL(servidor, banco, usuario, senha);
-                dal.DeleteLeitor(leitor);
+                EmprestimoDAL dalEmprestimo = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+
+                if (dalEmprestimo.QuantosEmprestimosLeitor(leitor.IdLeitor) > 0)
+                    throw new Exception("Esse leitor já emprestou algum livro, portanto não pode ser apagado!");
+                else
+                    dal.DeleteLeitor(leitor);
             }
             catch (Exception ex)
             {

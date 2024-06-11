@@ -49,7 +49,7 @@ namespace DAL
             }
         }
 
-        public void UpdateDataDevolucaoRealEmpresimo(int idEmprestimo, DateTime dataDevolucaoReal)
+        public void UpdateDataDevolucaoRealEmprestimo(int idEmprestimo, DateTime dataDevolucaoReal)
         {
             try
             {
@@ -142,7 +142,25 @@ namespace DAL
 
         public void QuantosEmprestimosLivro(int idLivro)
         {
-            // fazer count
+            int qtosEmprestimos = 0;
+            try
+            {
+                var cmd = new SqlCommand("Select count(*) from MVC.Emprestimo where idLivro = @idLivro", _conexao);
+                cmd.Parameters.AddWithValue("@idLivro", idLivro);
+
+                _conexao.Open();
+
+                var dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                    qtosEmprestimos = (int) dr[0];
+
+                return qtosEmprestimos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao contar os empréstimos do livro: " + ex.Message);
+            }
         }
 
         public List<Emprestimo> SelectEmprestimosNaoDevolvidosByLeitor(int idLeitor)
@@ -183,7 +201,25 @@ namespace DAL
 
         public void QuantosEmprestimosLeitor(int idLeitor)
         {
-            // fazer count
+            int qtosEmprestimos = 0;
+            try
+            {
+                var cmd = new SqlCommand("Select count(*) from MVC.Emprestimo where idLeitor = @idLeitor", _conexao);
+                cmd.Parameters.AddWithValue("@idLeitor", idLeitor);
+
+                _conexao.Open();
+
+                var dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                    qtosEmprestimos = (int)dr[0];
+
+                return qtosEmprestimos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao contar os empréstimos do leitor: " + ex.Message);
+            }
         }
 
 

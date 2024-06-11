@@ -76,6 +76,33 @@ namespace apBiblioteca.UI
             }
         }
 
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (txtIdLeitor.Text != "")
+            {
+                try
+                {
+                    var bll = new LeitorBLL(servidor, banco, usuario, senha);
+                    Leitor leitor = bll.ListarLeitorPorId(int.Parse(txtIdLeitor.Text));
+
+                    if (leitor == null)
+                    {
+                        MessageBox.Show("Leitor não encontrado!");
+                    }
+                    else
+                    {
+                        bll.ExcluirLeitor(leitor);
+                        MessageBox.Show("Leitor excluído com sucesso!");
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message.ToString());
+                }
+            }
+        }
+
         private void btnNovo_Click(object sender, EventArgs e)
         {
             if (txtNomeLeitor.Text != "" && txtEmailLeitor.Text != "" && txtTelefoneLeitor.Text != "" && txtEnderecoLeitor.Text != "")

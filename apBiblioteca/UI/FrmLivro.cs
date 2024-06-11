@@ -100,6 +100,34 @@ namespace apBiblioteca.UI
             txtAutorLivro.Text = "";
         }
 
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (txtCodigoLivro.Text != "")
+            {
+                try
+                {
+                    var bll = new LivroBLL(servidor, banco, usuario, senha);
+                    Livro livro = bll.ListarLivroPorCodigo(txtCodigoLivro.Text);
+
+                    if (livro == null)
+                    {
+                        MessageBox.Show("Livro não encontrado!");
+                        txtIdLivro.Text = "";
+                    }
+                    else
+                    {
+                        bll.ExcluirLivro(livro);
+                        MessageBox.Show("Livro excluído com sucesso!");
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(" Erro : " + ex.Message.ToString());
+                }
+            }
+        }
+
         private void btnExibir_Click(object sender, EventArgs e)
         {
             try

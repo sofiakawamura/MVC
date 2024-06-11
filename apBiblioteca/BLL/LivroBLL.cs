@@ -109,7 +109,12 @@ namespace BLL
             try
             {
                 dal = new DAL.LivroDAL(servidor, banco, usuario, senha);
-                dal.DeleteLivro(livro);
+                EmprestimoDAL dalEmprestimo = new DAL.EmprestimoDAL(servidor, banco, usuario, senha);
+
+                if (dalEmprestimo.QuantosEmprestimosLivro(livro.IdLivro) > 0)
+                    throw new Exception("Esse livro já foi emprestado, portanto não pode ser apagado!");
+                else
+                    dal.DeleteLivro(livro);
             }
             catch (Exception ex)
             {

@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpCadastro = new System.Windows.Forms.TabPage();
+            this.txtEnderecoLeitor = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnExibir = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
@@ -45,8 +47,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tpLista = new System.Windows.Forms.TabPage();
             this.dgvLeitor = new System.Windows.Forms.DataGridView();
-            this.txtEnderecoLeitor = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tpCadastro.SuspendLayout();
             this.tpLista.SuspendLayout();
@@ -91,6 +91,24 @@
             this.tpCadastro.Text = "Cadastro";
             this.tpCadastro.UseVisualStyleBackColor = true;
             // 
+            // txtEnderecoLeitor
+            // 
+            this.txtEnderecoLeitor.Location = new System.Drawing.Point(150, 234);
+            this.txtEnderecoLeitor.MaxLength = 100;
+            this.txtEnderecoLeitor.Multiline = true;
+            this.txtEnderecoLeitor.Name = "txtEnderecoLeitor";
+            this.txtEnderecoLeitor.Size = new System.Drawing.Size(404, 23);
+            this.txtEnderecoLeitor.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 237);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(128, 17);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Endereço do leitor:";
+            // 
             // btnExibir
             // 
             this.btnExibir.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -111,6 +129,7 @@
             this.btnExcluir.TabIndex = 6;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -215,10 +234,10 @@
             // tpLista
             // 
             this.tpLista.Controls.Add(this.dgvLeitor);
-            this.tpLista.Location = new System.Drawing.Point(4, 25);
+            this.tpLista.Location = new System.Drawing.Point(4, 22);
             this.tpLista.Name = "tpLista";
             this.tpLista.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLista.Size = new System.Drawing.Size(571, 358);
+            this.tpLista.Size = new System.Drawing.Size(571, 361);
             this.tpLista.TabIndex = 1;
             this.tpLista.Text = "Lista";
             this.tpLista.UseVisualStyleBackColor = true;
@@ -236,24 +255,6 @@
             this.dgvLeitor.ReadOnly = true;
             this.dgvLeitor.Size = new System.Drawing.Size(559, 340);
             this.dgvLeitor.TabIndex = 0;
-            // 
-            // txtEnderecoLeitor
-            // 
-            this.txtEnderecoLeitor.Location = new System.Drawing.Point(150, 234);
-            this.txtEnderecoLeitor.MaxLength = 100;
-            this.txtEnderecoLeitor.Multiline = true;
-            this.txtEnderecoLeitor.Name = "txtEnderecoLeitor";
-            this.txtEnderecoLeitor.Size = new System.Drawing.Size(404, 23);
-            this.txtEnderecoLeitor.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 237);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 17);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Endereço do leitor:";
             // 
             // FrmLeitor
             // 
