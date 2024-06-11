@@ -41,3 +41,5 @@ C:\Users\u23122\Documents\GitHub\apMVC\apBiblioteca\obj\Debug\apBiblioteca.cspro
 C:\Users\u23122\Documents\GitHub\apMVC\apBiblioteca\obj\Debug\apBiblioteca.exe
 C:\Users\u23122\Documents\GitHub\apMVC\apBiblioteca\obj\Debug\apBiblioteca.pdb
 >>>>>>> Stashed changes
+C:\Users\u23122\Documents\GitHub\apMVC\apBiblioteca\obj\Debug\apBiblioteca.UI.FrmConsultas.resources
+C:\Users\u23122\Documents\GitHub\apMVC\apBiblioteca\obj\Debug\apBiblioteca.UI.FrmEstatisticas.resources

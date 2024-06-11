@@ -140,7 +140,7 @@ namespace DAL
             }
         }
 
-        public void QuantosEmprestimosLivro(int idLivro)
+        public int QuantosEmprestimosLivro(int idLivro)
         {
             int qtosEmprestimos = 0;
             try
@@ -199,7 +199,7 @@ namespace DAL
             }
         }
 
-        public void QuantosEmprestimosLeitor(int idLeitor)
+        public int QuantosEmprestimosLeitor(int idLeitor)
         {
             int qtosEmprestimos = 0;
             try
