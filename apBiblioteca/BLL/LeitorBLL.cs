@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Ana Clara Martin da Silveira - 23122
+// Sofia Tasselli Kawamura - 23157
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using DAL;
@@ -10,7 +13,6 @@ namespace BLL
     {
         public string servidor, banco, usuario, senha;
         LeitorDAL dal = null;
-        EmprestimoDAL dalEmprestimo = null;
 
         public LeitorBLL(string servidor, string banco, string usuario, string senha)
         {

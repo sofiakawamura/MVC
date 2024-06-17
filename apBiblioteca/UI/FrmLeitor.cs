@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Ana Clara Martin da Silveira - 23122
+// Sofia Tasselli Kawamura - 23157
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +14,31 @@ namespace apBiblioteca.UI
     public partial class FrmLeitor : Form
     {
         public string servidor, banco, usuario, senha;
+
+        public FrmLeitor()
+        {
+            InitializeComponent();
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            if (txtNomeLeitor.Text != "" && txtEmailLeitor.Text != "" && txtTelefoneLeitor.Text != "" && txtEnderecoLeitor.Text != "")
+            {
+                var leitor = new Leitor(0, txtNomeLeitor.Text,
+                    txtTelefoneLeitor.Text, txtEmailLeitor.Text, txtEnderecoLeitor.Text);
+
+                try
+                {
+                    var bll = new LeitorBLL(servidor, banco, usuario, senha);
+                    bll.IncluirLeitor(leitor);
+                    txtIdLeitor.Text = bll.SelecionarUltimoIdLeitor() + "";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(" Erro : " + ex.Message.ToString());
+                }
+            }
+        }
 
         private void btnProcurar_Click(object sender, EventArgs e)
         {
@@ -28,10 +56,10 @@ namespace apBiblioteca.UI
                     else
                     {
                         txtIdLeitor.Text = leitor.IdLeitor.ToString();
-                        txtNomeLeitor.Text = leitor.NomeLeitor;
-                        txtTelefoneLeitor.Text = leitor.TelefoneLeitor;
-                        txtEmailLeitor.Text = leitor.EmailLeitor;
-                        txtEnderecoLeitor.Text = leitor.EnderecoLeitor;
+                        txtNomeLeitor.Text = leitor.NomeLeitor.Trim();
+                        txtTelefoneLeitor.Text = leitor.TelefoneLeitor.Trim();
+                        txtEmailLeitor.Text = leitor.EmailLeitor.Trim();
+                        txtEnderecoLeitor.Text = leitor.EnderecoLeitor.Trim();
                     }
                 }
                 catch (Exception ex)
@@ -93,32 +121,12 @@ namespace apBiblioteca.UI
                     {
                         bll.ExcluirLeitor(leitor);
                         MessageBox.Show("Leitor excluído com sucesso!");
-
+                        btnLimpar.PerformClick();
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro: " + ex.Message.ToString());
-                }
-            }
-        }
-
-        private void btnNovo_Click(object sender, EventArgs e)
-        {
-            if (txtNomeLeitor.Text != "" && txtEmailLeitor.Text != "" && txtTelefoneLeitor.Text != "" && txtEnderecoLeitor.Text != "")
-            {
-                var leitor = new Leitor(0, txtNomeLeitor.Text,
-                    txtTelefoneLeitor.Text, txtEmailLeitor.Text, txtEnderecoLeitor.Text);
-
-                try
-                {
-                    var bll = new LeitorBLL(servidor, banco, usuario, senha);
-                    bll.IncluirLeitor(leitor);
-                    txtIdLeitor.Text = bll.SelecionarUltimoIdLeitor() + "";
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(" Erro : " + ex.Message.ToString());
                 }
             }
         }
@@ -142,9 +150,13 @@ namespace apBiblioteca.UI
             }
         }
 
-        public FrmLeitor()
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
+            txtIdLeitor.Text = "";
+            txtNomeLeitor.Text = "";
+            txtEmailLeitor.Text = "";
+            txtTelefoneLeitor.Text = "";
+            txtEnderecoLeitor.Text = "";
         }
     }
 }

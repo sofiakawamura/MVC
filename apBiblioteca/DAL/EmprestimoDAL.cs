@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Ana Clara Martin da Silveira - 23122
+// Sofia Tasselli Kawamura - 23157
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -360,7 +363,8 @@ namespace DAL
 
                 int total = 0;
                 if (dr.Read())
-                    total = Convert.ToInt32(dr[0]);
+                    if (dr[0] != null)
+                        total = Convert.ToInt32(dr[0]);
 
                 _conexao.Close();
                 return total;

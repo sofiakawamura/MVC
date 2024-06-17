@@ -1,4 +1,7 @@
-﻿using apBiblioteca.UI;
+﻿// Ana Clara Martin da Silveira - 23122
+// Sofia Tasselli Kawamura - 23157
+
+using apBiblioteca.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,11 +78,6 @@ namespace apBiblioteca
             }
         }
 
-        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void livrosEmprestadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (txtServidor.Text == "" || txtBD.Text == "" || txtUsuario.Text == "" || txtSenha.Text == "")
@@ -112,6 +110,11 @@ namespace apBiblioteca
 
                 frmEstatisticas.Show();
             }
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void sairToolStripMenuItem2_Click(object sender, EventArgs e)

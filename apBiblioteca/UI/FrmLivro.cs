@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Ana Clara Martin da Silveira - 23122
+// Sofia Tasselli Kawamura - 23157
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +14,12 @@ namespace apBiblioteca.UI
     public partial class FrmLivro : Form
     {
         public string servidor, banco, usuario, senha;
+
+
+        public FrmLivro()
+        {
+            InitializeComponent();
+        }
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
@@ -49,8 +58,8 @@ namespace apBiblioteca.UI
                     else
                     {
                         txtIdLivro.Text = livro.IdLivro.ToString();
-                        txtTituloLivro.Text = livro.TituloLivro;
-                        txtAutorLivro.Text = livro.AutorLivro;
+                        txtTituloLivro.Text = livro.TituloLivro.Trim();
+                        txtAutorLivro.Text = livro.AutorLivro.Trim();
                     }
                 }
                 catch (Exception ex)
@@ -92,14 +101,6 @@ namespace apBiblioteca.UI
             }
         }
 
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            txtIdLivro.Text = "";
-            txtCodigoLivro.Text = "";
-            txtTituloLivro.Text = "";
-            txtAutorLivro.Text = "";
-        }
-
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             if (txtCodigoLivro.Text != "")
@@ -118,7 +119,7 @@ namespace apBiblioteca.UI
                     {
                         bll.ExcluirLivro(livro);
                         MessageBox.Show("Livro excluído com sucesso!");
-
+                        btnLimpar.PerformClick();
                     }
                 }
                 catch (Exception ex)
@@ -146,14 +147,12 @@ namespace apBiblioteca.UI
             }
         }
 
-        public FrmLivro()
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
-        }
-
-        private void FrmLivro_Load(object sender, EventArgs e)
-        {
-
+            txtIdLivro.Text = "";
+            txtCodigoLivro.Text = "";
+            txtTituloLivro.Text = "";
+            txtAutorLivro.Text = "";
         }
     }
 }

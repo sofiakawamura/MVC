@@ -101,54 +101,54 @@
             this.lbTotalEmprestimos.AutoSize = true;
             this.lbTotalEmprestimos.Location = new System.Drawing.Point(166, 20);
             this.lbTotalEmprestimos.Name = "lbTotalEmprestimos";
-            this.lbTotalEmprestimos.Size = new System.Drawing.Size(46, 17);
+            this.lbTotalEmprestimos.Size = new System.Drawing.Size(13, 17);
             this.lbTotalEmprestimos.TabIndex = 6;
-            this.lbTotalEmprestimos.Text = "label7";
+            this.lbTotalEmprestimos.Text = "-";
             // 
             // lbEmprestimosAtivos
             // 
             this.lbEmprestimosAtivos.AutoSize = true;
             this.lbEmprestimosAtivos.Location = new System.Drawing.Point(261, 59);
             this.lbEmprestimosAtivos.Name = "lbEmprestimosAtivos";
-            this.lbEmprestimosAtivos.Size = new System.Drawing.Size(46, 17);
+            this.lbEmprestimosAtivos.Size = new System.Drawing.Size(13, 17);
             this.lbEmprestimosAtivos.TabIndex = 7;
-            this.lbEmprestimosAtivos.Text = "label8";
+            this.lbEmprestimosAtivos.Text = "-";
             // 
             // lbTempoEmprestimo
             // 
             this.lbTempoEmprestimo.AutoSize = true;
             this.lbTempoEmprestimo.Location = new System.Drawing.Point(213, 98);
             this.lbTempoEmprestimo.Name = "lbTempoEmprestimo";
-            this.lbTempoEmprestimo.Size = new System.Drawing.Size(46, 17);
+            this.lbTempoEmprestimo.Size = new System.Drawing.Size(13, 17);
             this.lbTempoEmprestimo.TabIndex = 8;
-            this.lbTempoEmprestimo.Text = "label9";
+            this.lbTempoEmprestimo.Text = "-";
             // 
             // lbTotalAtrasos
             // 
             this.lbTotalAtrasos.AutoSize = true;
             this.lbTotalAtrasos.Location = new System.Drawing.Point(233, 137);
             this.lbTotalAtrasos.Name = "lbTotalAtrasos";
-            this.lbTotalAtrasos.Size = new System.Drawing.Size(54, 17);
+            this.lbTotalAtrasos.Size = new System.Drawing.Size(13, 17);
             this.lbTotalAtrasos.TabIndex = 9;
-            this.lbTotalAtrasos.Text = "label10";
+            this.lbTotalAtrasos.Text = "-";
             // 
             // lbAtrasosAtivos
             // 
             this.lbAtrasosAtivos.AutoSize = true;
             this.lbAtrasosAtivos.Location = new System.Drawing.Point(328, 176);
             this.lbAtrasosAtivos.Name = "lbAtrasosAtivos";
-            this.lbAtrasosAtivos.Size = new System.Drawing.Size(54, 17);
+            this.lbAtrasosAtivos.Size = new System.Drawing.Size(13, 17);
             this.lbAtrasosAtivos.TabIndex = 10;
-            this.lbAtrasosAtivos.Text = "label11";
+            this.lbAtrasosAtivos.Text = "-";
             // 
             // lbTempoAtraso
             // 
             this.lbTempoAtraso.AutoSize = true;
             this.lbTempoAtraso.Location = new System.Drawing.Point(180, 215);
             this.lbTempoAtraso.Name = "lbTempoAtraso";
-            this.lbTempoAtraso.Size = new System.Drawing.Size(54, 17);
+            this.lbTempoAtraso.Size = new System.Drawing.Size(13, 17);
             this.lbTempoAtraso.TabIndex = 11;
-            this.lbTempoAtraso.Text = "label12";
+            this.lbTempoAtraso.Text = "-";
             // 
             // FrmEstatisticas
             // 
@@ -167,7 +167,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmEstatisticas";
             this.Text = "Estatísticas de empréstimos";
             this.Load += new System.EventHandler(this.FrmEstatisticas_Load);

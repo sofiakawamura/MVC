@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Ana Clara Martin da Silveira - 23122
+// Sofia Tasselli Kawamura - 23157
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,14 +26,19 @@ namespace apBiblioteca.UI
             {
                 var bll = new EmprestimoBLL(servidor, banco, usuario, senha);
 
-                lbTotalEmprestimos.Text = bll.TotalEmprestimos().ToString();
+                int qtosEmprestimos = bll.TotalEmprestimos();
+                int qtosAtrasos = bll.TotalAtrasos();
+
+                lbTotalEmprestimos.Text = qtosEmprestimos.ToString();
                 lbEmprestimosAtivos.Text = bll.EmprestimosAtivos().ToString();
 
-                lbTotalAtrasos.Text = bll.TotalAtrasos().ToString();
+                lbTotalAtrasos.Text = qtosAtrasos.ToString();
                 lbAtrasosAtivos.Text = bll.AtrasosAtivos().ToString();
 
-                lbTempoEmprestimo.Text = bll.TempoEmprestimo().ToString();
-                lbTempoAtraso.Text = bll.TempoAtraso().ToString();
+                if (qtosEmprestimos > 0)
+                    lbTempoEmprestimo.Text = bll.TempoEmprestimo().ToString();
+                if (qtosAtrasos > 0)
+                    lbTempoAtraso.Text = bll.TempoAtraso().ToString();
             }
             catch (Exception ex)
             {

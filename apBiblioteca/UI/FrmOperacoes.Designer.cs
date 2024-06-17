@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpEmprestimo = new System.Windows.Forms.TabPage();
+            this.udIdLeitorEmprestimo = new System.Windows.Forms.NumericUpDown();
+            this.udIdLivroEmprestimo = new System.Windows.Forms.NumericUpDown();
             this.dateDevolucaoPrevista = new System.Windows.Forms.DateTimePicker();
             this.lbNomeLeitorEmprestimo = new System.Windows.Forms.Label();
             this.lbTituloLivroEmprestimo = new System.Windows.Forms.Label();
@@ -40,6 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tpDevolucao = new System.Windows.Forms.TabPage();
+            this.udIdLivroDevolucao = new System.Windows.Forms.NumericUpDown();
             this.chkAtrasado = new System.Windows.Forms.CheckBox();
             this.lbNomeLeitorDevolucao = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -48,17 +51,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tpLista = new System.Windows.Forms.TabPage();
             this.dgvLista = new System.Windows.Forms.DataGridView();
-            this.udIdLivroEmprestimo = new System.Windows.Forms.NumericUpDown();
-            this.udIdLeitorEmprestimo = new System.Windows.Forms.NumericUpDown();
-            this.udIdLivroDevolucao = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tpEmprestimo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.udIdLeitorEmprestimo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udIdLivroEmprestimo)).BeginInit();
             this.tpDevolucao.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.udIdLivroDevolucao)).BeginInit();
             this.tpLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udIdLivroEmprestimo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udIdLeitorEmprestimo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udIdLivroDevolucao)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -96,12 +96,48 @@
             this.tpEmprestimo.Text = "Empréstimo";
             this.tpEmprestimo.UseVisualStyleBackColor = true;
             // 
+            // udIdLeitorEmprestimo
+            // 
+            this.udIdLeitorEmprestimo.Location = new System.Drawing.Point(174, 76);
+            this.udIdLeitorEmprestimo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIdLeitorEmprestimo.Name = "udIdLeitorEmprestimo";
+            this.udIdLeitorEmprestimo.Size = new System.Drawing.Size(120, 23);
+            this.udIdLeitorEmprestimo.TabIndex = 1;
+            this.udIdLeitorEmprestimo.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIdLeitorEmprestimo.Leave += new System.EventHandler(this.udIdLeitorEmprestimo_Leave);
+            // 
+            // udIdLivroEmprestimo
+            // 
+            this.udIdLivroEmprestimo.Location = new System.Drawing.Point(174, 24);
+            this.udIdLivroEmprestimo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIdLivroEmprestimo.Name = "udIdLivroEmprestimo";
+            this.udIdLivroEmprestimo.Size = new System.Drawing.Size(120, 23);
+            this.udIdLivroEmprestimo.TabIndex = 0;
+            this.udIdLivroEmprestimo.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIdLivroEmprestimo.Leave += new System.EventHandler(this.udIdLivroEmprestimo_Leave);
+            // 
             // dateDevolucaoPrevista
             // 
             this.dateDevolucaoPrevista.Location = new System.Drawing.Point(174, 130);
             this.dateDevolucaoPrevista.Name = "dateDevolucaoPrevista";
             this.dateDevolucaoPrevista.Size = new System.Drawing.Size(199, 23);
-            this.dateDevolucaoPrevista.TabIndex = 11;
+            this.dateDevolucaoPrevista.TabIndex = 2;
             // 
             // lbNomeLeitorEmprestimo
             // 
@@ -127,7 +163,7 @@
             this.btnLimpar.Location = new System.Drawing.Point(247, 184);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(79, 34);
-            this.btnLimpar.TabIndex = 8;
+            this.btnLimpar.TabIndex = 5;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
@@ -138,7 +174,7 @@
             this.btnExibir.Location = new System.Drawing.Point(149, 184);
             this.btnExibir.Name = "btnExibir";
             this.btnExibir.Size = new System.Drawing.Size(79, 34);
-            this.btnExibir.TabIndex = 7;
+            this.btnExibir.TabIndex = 4;
             this.btnExibir.Text = "Exibir";
             this.btnExibir.UseVisualStyleBackColor = true;
             this.btnExibir.Click += new System.EventHandler(this.btnExibir_Click);
@@ -149,7 +185,7 @@
             this.btnEmprestar.Location = new System.Drawing.Point(26, 184);
             this.btnEmprestar.Name = "btnEmprestar";
             this.btnEmprestar.Size = new System.Drawing.Size(107, 34);
-            this.btnEmprestar.TabIndex = 4;
+            this.btnEmprestar.TabIndex = 3;
             this.btnEmprestar.Text = "Emprestar";
             this.btnEmprestar.UseVisualStyleBackColor = true;
             this.btnEmprestar.Click += new System.EventHandler(this.btnEmprestar_Click);
@@ -198,6 +234,24 @@
             this.tpDevolucao.Text = "Devolução";
             this.tpDevolucao.UseVisualStyleBackColor = true;
             // 
+            // udIdLivroDevolucao
+            // 
+            this.udIdLivroDevolucao.Location = new System.Drawing.Point(169, 24);
+            this.udIdLivroDevolucao.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIdLivroDevolucao.Name = "udIdLivroDevolucao";
+            this.udIdLivroDevolucao.Size = new System.Drawing.Size(120, 23);
+            this.udIdLivroDevolucao.TabIndex = 0;
+            this.udIdLivroDevolucao.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udIdLivroDevolucao.Leave += new System.EventHandler(this.udIdLivroDevolucao_Leave);
+            // 
             // chkAtrasado
             // 
             this.chkAtrasado.AutoSize = true;
@@ -233,7 +287,7 @@
             this.btnDevolver.Location = new System.Drawing.Point(26, 184);
             this.btnDevolver.Name = "btnDevolver";
             this.btnDevolver.Size = new System.Drawing.Size(107, 34);
-            this.btnDevolver.TabIndex = 13;
+            this.btnDevolver.TabIndex = 1;
             this.btnDevolver.Text = "Devolver";
             this.btnDevolver.UseVisualStyleBackColor = true;
             this.btnDevolver.Click += new System.EventHandler(this.btnDevolver_Click);
@@ -278,62 +332,8 @@
             this.dgvLista.Location = new System.Drawing.Point(3, 6);
             this.dgvLista.Name = "dgvLista";
             this.dgvLista.ReadOnly = true;
-            this.dgvLista.Size = new System.Drawing.Size(587, 231);
+            this.dgvLista.Size = new System.Drawing.Size(587, 228);
             this.dgvLista.TabIndex = 0;
-            // 
-            // udIdLivroEmprestimo
-            // 
-            this.udIdLivroEmprestimo.Location = new System.Drawing.Point(174, 24);
-            this.udIdLivroEmprestimo.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.udIdLivroEmprestimo.Name = "udIdLivroEmprestimo";
-            this.udIdLivroEmprestimo.Size = new System.Drawing.Size(120, 23);
-            this.udIdLivroEmprestimo.TabIndex = 12;
-            this.udIdLivroEmprestimo.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.udIdLivroEmprestimo.Leave += new System.EventHandler(this.udIdLivroEmprestimo_Leave);
-            // 
-            // udIdLeitorEmprestimo
-            // 
-            this.udIdLeitorEmprestimo.Location = new System.Drawing.Point(174, 76);
-            this.udIdLeitorEmprestimo.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.udIdLeitorEmprestimo.Name = "udIdLeitorEmprestimo";
-            this.udIdLeitorEmprestimo.Size = new System.Drawing.Size(120, 23);
-            this.udIdLeitorEmprestimo.TabIndex = 13;
-            this.udIdLeitorEmprestimo.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.udIdLeitorEmprestimo.Leave += new System.EventHandler(this.udIdLeitorEmprestimo_Leave);
-            // 
-            // udIdLivroDevolucao
-            // 
-            this.udIdLivroDevolucao.Location = new System.Drawing.Point(169, 24);
-            this.udIdLivroDevolucao.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.udIdLivroDevolucao.Name = "udIdLivroDevolucao";
-            this.udIdLivroDevolucao.Size = new System.Drawing.Size(120, 23);
-            this.udIdLivroDevolucao.TabIndex = 17;
-            this.udIdLivroDevolucao.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.udIdLivroDevolucao.Leave += new System.EventHandler(this.udIdLivroDevolucao_Leave);
             // 
             // FrmOperacoes
             // 
@@ -347,13 +347,13 @@
             this.tabControl1.ResumeLayout(false);
             this.tpEmprestimo.ResumeLayout(false);
             this.tpEmprestimo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.udIdLeitorEmprestimo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udIdLivroEmprestimo)).EndInit();
             this.tpDevolucao.ResumeLayout(false);
             this.tpDevolucao.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.udIdLivroDevolucao)).EndInit();
             this.tpLista.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udIdLivroEmprestimo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udIdLeitorEmprestimo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.udIdLivroDevolucao)).EndInit();
             this.ResumeLayout(false);
 
         }

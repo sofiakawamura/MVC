@@ -95,7 +95,7 @@
             this.btnLimpar.Location = new System.Drawing.Point(439, 20);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(79, 34);
-            this.btnLimpar.TabIndex = 8;
+            this.btnLimpar.TabIndex = 4;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
@@ -106,7 +106,7 @@
             this.btnExibir.Location = new System.Drawing.Point(439, 242);
             this.btnExibir.Name = "btnExibir";
             this.btnExibir.Size = new System.Drawing.Size(79, 34);
-            this.btnExibir.TabIndex = 7;
+            this.btnExibir.TabIndex = 8;
             this.btnExibir.Text = "Exibir";
             this.btnExibir.UseVisualStyleBackColor = true;
             this.btnExibir.Click += new System.EventHandler(this.btnExibir_Click);
@@ -117,7 +117,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(308, 242);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(79, 34);
-            this.btnExcluir.TabIndex = 6;
+            this.btnExcluir.TabIndex = 7;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -128,7 +128,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(177, 242);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(79, 34);
-            this.btnAlterar.TabIndex = 5;
+            this.btnAlterar.TabIndex = 6;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -139,7 +139,7 @@
             this.btnNovo.Location = new System.Drawing.Point(46, 242);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(79, 34);
-            this.btnNovo.TabIndex = 4;
+            this.btnNovo.TabIndex = 5;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
@@ -245,7 +245,7 @@
             this.dgvLivro.Location = new System.Drawing.Point(6, 6);
             this.dgvLivro.Name = "dgvLivro";
             this.dgvLivro.ReadOnly = true;
-            this.dgvLivro.Size = new System.Drawing.Size(559, 287);
+            this.dgvLivro.Size = new System.Drawing.Size(559, 284);
             this.dgvLivro.TabIndex = 0;
             // 
             // FrmLivro
@@ -256,7 +256,6 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.Name = "FrmLivro";
             this.Text = "FrmLivro";
-            this.Load += new System.EventHandler(this.FrmLivro_Load);
             this.tabControl1.ResumeLayout(false);
             this.tpCadastro.ResumeLayout(false);
             this.tpCadastro.PerformLayout();

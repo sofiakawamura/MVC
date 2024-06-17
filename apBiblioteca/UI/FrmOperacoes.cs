@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Ana Clara Martin da Silveira - 23122
+// Sofia Tasselli Kawamura - 23157
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -53,28 +56,35 @@ namespace apBiblioteca.UI
 
         private void udIdLivroDevolucao_Leave(object sender, EventArgs e)
         {
+            lbTituloLivroDevolucao.Text = "-";
+            lbNomeLeitorDevolucao.Text = "-";
+            chkAtrasado.Checked = false;
+
             try
             {
                 var bllLivro = new LivroBLL(servidor, banco, usuario, senha);
                 Livro livro = bllLivro.ListarLivroPorId(int.Parse(udIdLivroDevolucao.Value.ToString()));
+
                 if (livro == null)
                     MessageBox.Show("Livro não encontrado!");
                 else
+                {
                     lbTituloLivroDevolucao.Text = livro.TituloLivro;
 
-                var bll = new EmprestimoBLL(servidor, banco, usuario, senha);
-                Emprestimo emprestimo = bll.SelecionarEmprestimoNaoDevolvidoPorLivro(int.Parse(udIdLivroDevolucao.Value.ToString()));
+                    var bll = new EmprestimoBLL(servidor, banco, usuario, senha);
+                    Emprestimo emprestimo = bll.SelecionarEmprestimoNaoDevolvidoPorLivro(int.Parse(udIdLivroDevolucao.Value.ToString()));
 
-                if (emprestimo == null)
-                    MessageBox.Show("Livro não emprestado!");
-                else
-                {
-                    var bllLeitor = new LeitorBLL(servidor, banco, usuario, senha);
-                    Leitor leitor = bllLeitor.ListarLeitorPorId(emprestimo.IdLeitor);
-                    lbNomeLeitorDevolucao.Text = leitor.NomeLeitor;
+                    if (emprestimo == null)
+                        MessageBox.Show("Livro não emprestado!");
+                    else
+                    {
+                        var bllLeitor = new LeitorBLL(servidor, banco, usuario, senha);
+                        Leitor leitor = bllLeitor.ListarLeitorPorId(emprestimo.IdLeitor);
+                        lbNomeLeitorDevolucao.Text = leitor.NomeLeitor;
 
-                    if (DateTime.Today.CompareTo(emprestimo.DataDevolucaoPrevista) > 0)
-                        chkAtrasado.Checked = true;
+                        if (DateTime.Today.CompareTo(emprestimo.DataDevolucaoPrevista) > 0)
+                            chkAtrasado.Checked = true;
+                    }
                 }
             }
             catch (Exception ex)
@@ -83,13 +93,44 @@ namespace apBiblioteca.UI
             }
         }
 
-        private void btnLimpar_Click(object sender, EventArgs e)
+        private void btnEmprestar_Click(object sender, EventArgs e)
         {
-            lbNomeLeitorEmprestimo.Text = "-";
-            lbTituloLivroEmprestimo.Text = "-";
-            udIdLeitorEmprestimo.Value = 1;
-            udIdLivroEmprestimo.Value = 1;
-            dateDevolucaoPrevista.Value = DateTime.Today;
+            try
+            {
+                var bll = new EmprestimoBLL(servidor, banco, usuario, senha);
+            
+                Emprestimo novo = new Emprestimo(0, 
+                    int.Parse(udIdLivroEmprestimo.Value.ToString()), int.Parse(udIdLeitorEmprestimo.Value.ToString()),
+                    DateTime.Today, dateDevolucaoPrevista.Value, DateTime.Today);
+                bll.IncluirEmprestimo(novo);
+
+                MessageBox.Show("Empréstimo registrado!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" Erro : " + ex.Message.ToString());
+            }
+        }
+
+        private void btnDevolver_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                var bll = new EmprestimoBLL(servidor, banco, usuario, senha);
+                Emprestimo emprestimo = bll.SelecionarEmprestimoNaoDevolvidoPorLivro(int.Parse(udIdLivroDevolucao.Value.ToString()));
+
+                if (emprestimo == null)
+                    MessageBox.Show("Livro não emprestado!");
+                else
+                {
+                    bll.UpdateDataDevolucaoRealEmpresimo(emprestimo.IdEmprestimo, DateTime.Today);
+                    MessageBox.Show("Devolvido!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" Erro : " + ex.Message.ToString());
+            }
         }
 
         private void btnExibir_Click(object sender, EventArgs e)
@@ -112,40 +153,13 @@ namespace apBiblioteca.UI
             }
         }
 
-        private void btnEmprestar_Click(object sender, EventArgs e)
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var bll = new EmprestimoBLL(servidor, banco, usuario, senha);
-            
-                Emprestimo novo = new Emprestimo(0, 
-                    int.Parse(udIdLivroEmprestimo.Value.ToString()), int.Parse(udIdLeitorEmprestimo.Value.ToString()),
-                    DateTime.Today, dateDevolucaoPrevista.Value, DateTime.Today);
-                bll.IncluirEmprestimo(novo);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(" Erro : " + ex.Message.ToString());
-            }
-        }
-
-
-        private void btnDevolver_Click(object sender, EventArgs e)
-        {
-            try 
-            {
-                var bll = new EmprestimoBLL(servidor, banco, usuario, senha);
-                Emprestimo emprestimo = bll.SelecionarEmprestimoNaoDevolvidoPorLivro(int.Parse(udIdLivroDevolucao.Value.ToString()));
-
-                if (emprestimo == null)
-                    MessageBox.Show("Livro não emprestado!");
-                else
-                    bll.UpdateDataDevolucaoRealEmpresimo(emprestimo.IdEmprestimo, DateTime.Today);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(" Erro : " + ex.Message.ToString());
-            }
+            lbNomeLeitorEmprestimo.Text = "-";
+            lbTituloLivroEmprestimo.Text = "-";
+            udIdLeitorEmprestimo.Value = 1;
+            udIdLivroEmprestimo.Value = 1;
+            dateDevolucaoPrevista.Value = DateTime.Today;
         }
     }
 }
